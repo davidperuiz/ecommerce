@@ -1,0 +1,49 @@
+@mixin flex-row
+    display: flex
+    flex-direction: row
+
+#nav-bar
+    @include flex-row
+    background-color: #2D2D2D
+
+    h1
+        font-size: 20px
+        margin: 20px 15px
+
+    nav
+        @include flex-row
+        flex-grow: 1
+        font-size: 12px
+        align-items: center
+        justify-content: space-evenly
+    
+    ul
+        padding: 0
+        margin: 0
+        list-style: none
+        li
+            flex: 1
+            a
+                height: 100%
+                padding: 15px 10px
+
+            i
+                font-size: 20px
+
+    a
+        text-decoration: none
+        color: white
+
+    #nav-menu 
+        @include flex-row
+        text-transform: uppercase
+
+    #search-bar
+        height: 20px
+        width: 65%
+        border-radius: 1.5rem
+        border: none
+        padding: 10px 10px
+
+    #nav-user-panel
+        @include flex-row
