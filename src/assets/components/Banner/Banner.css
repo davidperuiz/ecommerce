@@ -1,0 +1,17 @@
+#banner {
+  display: flex;
+  justify-content: center;
+  cursor: default;
+}
+#banner .promo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 75%;
+  height: 60px;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgb(45, 45, 45) 0%, rgb(40, 60, 80) 100%);
+  color: white;
+  border-radius: 10px;
+}

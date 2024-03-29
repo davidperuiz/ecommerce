@@ -1,0 +1,51 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+}
+.nav-bar h1 {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 20px 15px;
+  color: white;
+}
+.nav-bar nav {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  font-size: 12px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.nav-bar .nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 25%;
+}
+.nav-bar .nav-menu li a {
+  height: 100%;
+  padding: 15px 10px;
+  text-decoration: none;
+  color: white;
+}
+.nav-bar .nav-menu li i {
+  font-size: 20px;
+}
+.nav-bar .search-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding: 0 10px;
+}
+.nav-bar .search-bar input[type=text] {
+  height: 20px;
+  width: 100%;
+  border-radius: 1.5rem;
+  border: none;
+  padding: 10px 20px;
+}

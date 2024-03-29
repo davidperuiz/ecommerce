@@ -1,6 +1,7 @@
-#footer-info
+.footer-info
     background-color: #2D2D2D
     color: white
+    margin-top: 20px
 
     nav
         display: flex
@@ -8,9 +9,11 @@
         justify-content: space-evenly
 
         .footer-contact
-            header
+            display: flex
+            flex-direction: column
+            h4
                 font-weight: bold
-                margin: 10px 0
+                margin: 20px 0 10px 0
             ul
                 padding: 0
                 margin: 0
@@ -18,13 +21,14 @@
                 li
                     font-size: 14px
                     margin: 5px 0
+                    cursor: default
     
     hr
         border-color: #434343
         margin-top: 25px
         margin-bottom: 15px
 
-    #footer-rights
+    .footer-rights
         text-align: center
         font-size: 12px
         padding-bottom: 25px
