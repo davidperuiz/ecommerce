@@ -6,9 +6,6 @@ import "./ProductsSection.css";
 const ProductsSection = ({ term }) => {
     const products = data.filter(product => product.title.toLowerCase().includes(term.toLowerCase()));
 
-    // const filteredProducts = products.filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()));
-
-
     return (
         <div id="products-section">
             {products.map((product) => (

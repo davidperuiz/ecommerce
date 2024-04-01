@@ -1,9 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { DarkThemeContext } from '../Context/DarkThemeContext';
+import { CartContext } from '../Context/CartContext';
 import "./HeaderIcons.css";
 
-const HeaderIcons = () => {
+const HeaderIcons = ({ onCartClick }) => {
     const { dark, toggleTheme } = useContext(DarkThemeContext);
+    const { cart, addToCart } = useContext(CartContext);
+
+    const handleCartState = () => {
+        onCartClick(true);
+    }
+
+    const amountProductsCart = () => {
+        return cart.reduce((total, product) => {
+            return total + product.quantity;
+        }, 0)
+    }
 
     return (
         <ul className="user-icons">
@@ -16,7 +28,17 @@ const HeaderIcons = () => {
                     >
                 </i>
             </li>
-            <li><i className="fa-solid fa-cart-shopping"></i></li>
+            <li><i
+                    className="fa-solid fa-cart-shopping"
+                    onClick={handleCartState}
+                    >
+                </i>
+                { cart.length === 0 ? "" :
+                    <div className="cart-quantity-products">
+                        {amountProductsCart()}
+                    </div>
+                 }
+            </li>
         </ul>
     );
 }
