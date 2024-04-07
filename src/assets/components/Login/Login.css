@@ -1,13 +1,13 @@
 .login-section {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
 }
 .login-section .login-panel {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 300px;
-  margin-top: 100px;
-  margin-bottom: 20px;
   padding: 20px;
   border-radius: 10px;
   background-color: #F8F8F8;

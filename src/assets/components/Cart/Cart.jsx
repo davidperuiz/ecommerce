@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { DarkThemeContext } from '../Context/DarkThemeContext';
-import { CartContext } from '../Context/CartContext';
-import CartProductComponent from '../CartProductComponent/CartProductComponent';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useDarkTheme from '../../hooks/useDarkTheme';
+import useCart from '../../hooks/useCart';
+import CartProduct from '../CartProduct/CartProduct';
 import "./Cart.css";
 
 const Cart = () => {
-    const { dark, toggleTheme } = useContext(DarkThemeContext);
-    const { cart, addToCart } = useContext(CartContext);
+    const { dark } = useDarkTheme();
+    const { cart, emptyCart, buy } = useCart();
 
     const totalCart = () => {
         let total = 0;
@@ -24,15 +25,19 @@ const Cart = () => {
                 { cart.length === 0 ? 
                     (<>
                         <h2>Tu cesta de la compra está vacía</h2>
-                        <p>Echa un vistazo a nuestros productos y llénala de los productos que más te guste.</p>
+                        <Link to="/">Echa un vistazo a nuestros productos y llénala de los productos que más te guste.</Link>
                     </>)
                  :
                     <>
                     { cart.map((product, index) => (
-                        <CartProductComponent key={index} product={product} quantity={product.quantity} />
+                        <CartProduct key={index} product={product} quantity={product.quantity} />
                     )) }
                     <div className="cart-total">
                         <p>Total a pagar: ${totalCart().toFixed(2)}</p>
+                    </div>
+                    <div className="cart-panel">
+                        <button className="buy-cart" onClick={buy}>Comprar</button>
+                        <button className="empty-cart" onClick={emptyCart}>Vaciar carro</button>
                     </div>
                     </>
                 }

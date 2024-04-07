@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useSearch from '../../hooks/useSearch';
 import ProductCard from '../ProductCard/ProductCard';
 import data from "../../fakeapi/data.json";
 import "./ProductsSection.css";
 
-const ProductsSection = ({ term }) => {
-    const products = data.filter(product => product.title.toLowerCase().includes(term.toLowerCase()));
+const ProductsSection = () => {
+    const { search } = useSearch();
+    const products = data.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
 
     return (
         <div id="products-section">

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Banner.css";
+import { AuthContext } from '../../context/AuthContext';
 
 const Banner = () => {
+    const { isLoggedIn, userData } = useContext(AuthContext);
+
     return (
         <div id="banner">
             <p className="promo">
-                {!localStorage.getItem("user@MiTienda") ?
+                {!isLoggedIn ?
                 "Crea una cuenta para disfrutar de nuestros descuentos" : 
-                `¡${JSON.parse(localStorage.getItem("user@MiTienda")).username}, aprovéchate de tu 20% de descuento!`}
+                `¡${userData.name}, aprovéchate de tu 20% de descuento!`}
             </p>
         </div>
     );

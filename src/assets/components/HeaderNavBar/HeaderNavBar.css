@@ -3,11 +3,12 @@
   flex-direction: row;
   width: 85%;
 }
-.nav-bar h1 {
+.nav-bar h1 a {
   cursor: pointer;
   font-size: 20px;
   margin: 20px 15px;
   color: white;
+  text-decoration: none;
 }
 .nav-bar nav {
   display: flex;

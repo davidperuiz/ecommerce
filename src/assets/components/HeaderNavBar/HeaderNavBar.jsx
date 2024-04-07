@@ -1,33 +1,29 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import useSearch from '../../hooks/useSearch';
 import "./HeaderNavBar.css"
 
-const HeaderNavBar = ({ onFilterChange, onProductsClick }) => {
+const HeaderNavBar = () => {
     const menuOptions = ["Inicio", "Categoría", "Ofertas", "Contacto"];
-    const [textFilter, setTextFilter] = useState("");
-
-    const handleProducstState = () => {
-        onProductsClick(true);
-    }
+    const { searchTerm } = useSearch();
 
     const handleInputChange = (event) => {
-        const newText = event.target.value;
-        setTextFilter(newText);
-        onFilterChange(newText);
+        const { value } = event.target;
+        searchTerm(value);
     }
 
     return (
         <nav className="nav-bar">
-            <h1 onClick={handleProducstState}>MiTienda</h1>
+            <h1><Link to="/">MiTienda</Link></h1>
             <ul className="nav-menu">
                 {menuOptions.map((option) => (
-                    <li key={option}><a href="#">{option}</a></li>
+                    <li key={option}><Link to="#">{option}</Link></li>
                 ))}
             </ul>
             <div className="search-bar">
                 <input
                     type="text"
                     placeholder="Buscar productos"
-                    value={textFilter}
                     onChange={handleInputChange}
                 />
             </div>

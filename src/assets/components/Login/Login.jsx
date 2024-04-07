@@ -1,42 +1,56 @@
-import React, { useContext } from 'react';
-import { DarkThemeContext } from '../Context/DarkThemeContext';
+import React from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
+import useDarkTheme from '../../hooks/useDarkTheme';
+import useAuth from '../../hooks/useAuth';
 import "./Login.css"
 
 const Login = () => {
-    const { dark, toggleTheme } = useContext(DarkThemeContext);
+    const { isLoggedIn, userData, login, logout } = useAuth();
+    const { dark } = useDarkTheme();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const handleLoginLogout = () => {
-        if (!localStorage.getItem("user@MiTienda")) {
-            const userData = {
-                username: document.getElementById("nombre").value,
-                email: document.getElementById("email").value
-            }
-            localStorage.setItem("user@MiTienda", JSON.stringify(userData));
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.nombre.value;
+        const email = form.email.value;
+
+        if (name && email){
+            login({name: name, email});
+            navigate(location.state.pathname);
         }
         else
-            localStorage.removeItem("user@MiTienda");
+            alert("Por favor, completa todos los campos.");
+    }
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
     }
 
     return (
         <div className="login-section">
-            <form className={`login-panel${dark ? " dark" : ""}`}>
+            <form className={`login-panel${dark ? " dark" : ""}`} onSubmit={handleSubmit}>
             
-            {!localStorage.getItem("user@MiTienda") ?
+            {!isLoggedIn ?
                 <>
                     <label htmlFor="nombre">Nombre:</label> 
                     <input type="text" id="nombre" />
                     <label htmlFor="email">Email:</label> 
                     <input type="email" id="email" />
-                </> :
-
+                    <button className="log-session">
+                        Iniciar sesión
+                    </button>
+                </>
+                :
                 <>
-                    <p className="login-welcome">Bienvenido, {JSON.parse(localStorage.getItem("user@MiTienda")).username}.</p>
+                    <p className="login-welcome">Bienvenido, {userData.name}.</p>
+                    <button className="log-session" onClick={handleLogout}>
+                        Cerrar sesión
+                    </button>
                 </>
             }
-            
-            <button className="log-session" onClick={handleLoginLogout}>
-                {localStorage.getItem("user@MiTienda") ? "Cerrar sesión" : "Iniciar sesión"}
-            </button>
             </form>
         </div>
     );

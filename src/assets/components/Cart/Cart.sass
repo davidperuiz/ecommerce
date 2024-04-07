@@ -1,11 +1,12 @@
 .cart
     display: flex
     justify-content: center
+    flex-grow: 1
 
     .cart-content
         display: flex
         flex-direction: column
-        align-items: flex-start
+        justify-content: center
         border: 2px solid #ECECEC
         border-radius: 10px
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
@@ -14,6 +15,13 @@
 
         h2
             margin-bottom: 0
+
+        a
+            text-decoration: none
+            color: #006CFF
+            &:hover
+                text-decoration: underline
+                color: #00AAFF
 
         .cart-total
             display: flex
@@ -24,6 +32,29 @@
             
             p
                 margin-right: 20px
+
+        .cart-panel
+            display: flex
+            justify-content: space-evenly
+            width: 100%
+            
+            button
+                width: 120px
+                padding: 10px 0
+                border: none
+                border-radius: 5px
+                cursor: pointer
+                color: white
+
+            .buy-cart
+                background-color: #006CFF
+                &:hover
+                    background-color: #00AAFF
+
+            .empty-cart
+                background-color: #FF5028
+                &:hover
+                    background-color: #FF7346
 
     .cart-content.empty
         align-items: center

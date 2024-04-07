@@ -12,6 +12,9 @@
   font-size: 20px;
   cursor: pointer;
 }
+.user-icons li a {
+  color: white;
+}
 .user-icons li .cart-quantity-products {
   display: flex;
   justify-content: center;

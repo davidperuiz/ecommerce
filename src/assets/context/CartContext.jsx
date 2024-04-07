@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const CartContext = createContext("");
 
-export const CartContextProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addToCart = (product) => {
@@ -20,12 +20,22 @@ export const CartContextProvider = ({ children }) => {
         } else {
             setCart([...cart, { ...product, quantity: 1 }]);
         }
+    }
 
+    const buy = () => {
+        alert("Serás redirigido a la pasarela de pago.");
+        setCart([]);
+    }
+
+    const emptyCart = () => {
+        setCart([]);
     }
 
     const cartContextValues = {
         cart,
-        addToCart
+        addToCart,
+        emptyCart,
+        buy
     }
 
     return (

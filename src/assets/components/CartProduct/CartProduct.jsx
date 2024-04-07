@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { DarkThemeContext } from '../Context/DarkThemeContext';
-import "./CartProductComponent.css";
+import React from 'react';
+import "./CartProduct.css";
 
-const CartProductComponent = ({ product, quantity }) => {
-    const { id, title, price, description, image, rating } = product;
-    const { dark, toggleTheme } = useContext(DarkThemeContext);
+const CartProduct = ({ product, quantity }) => {
+    const { id, title, price, image } = product;
 
     return (
         <div className="cart-product" key={id}>
@@ -19,4 +17,4 @@ const CartProductComponent = ({ product, quantity }) => {
     );
 }
 
-export default CartProductComponent;
+export default CartProduct;

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { DarkThemeContext } from '../Context/DarkThemeContext';
-import { CartContext } from '../Context/CartContext';
+import { Link } from 'react-router-dom';
+import useDarkTheme from '../../hooks/useDarkTheme';
+import { CartContext } from '../../context/CartContext';
 import "./HeaderIcons.css";
 
 const HeaderIcons = ({ onCartClick }) => {
-    const { dark, toggleTheme } = useContext(DarkThemeContext);
-    const { cart, addToCart } = useContext(CartContext);
+    const { toggleTheme } = useDarkTheme();
+    const { cart } = useContext(CartContext);
 
     const handleCartState = () => {
         onCartClick(true);
@@ -19,7 +20,9 @@ const HeaderIcons = ({ onCartClick }) => {
 
     return (
         <ul className="user-icons">
-            <li><i className="fa-solid fa-user"></i></li>
+            <li><Link to="/login"><i 
+                className="fa-solid fa-user"></i>
+            </Link></li>
             <li><i className="fa-solid fa-heart"></i></li>
             <li>
                 <i
@@ -28,11 +31,10 @@ const HeaderIcons = ({ onCartClick }) => {
                     >
                 </i>
             </li>
-            <li><i
+            <li><Link to="/cart"><i
                     className="fa-solid fa-cart-shopping"
-                    onClick={handleCartState}
                     >
-                </i>
+                </i></Link>
                 { cart.length === 0 ? "" :
                     <div className="cart-quantity-products">
                         {amountProductsCart()}
