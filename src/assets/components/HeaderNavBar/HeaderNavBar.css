@@ -46,7 +46,7 @@
 .nav-bar .search-bar input[type=text] {
   height: 20px;
   width: 100%;
-  border-radius: 1.5rem;
+  border-radius: 15px;
   border: none;
   padding: 10px 20px;
 }

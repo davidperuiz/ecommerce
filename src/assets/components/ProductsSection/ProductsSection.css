@@ -3,3 +3,21 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+#products-section .add-product-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #13CE4B;
+  color: white;
+  cursor: pointer;
+}
+#products-section .add-product-button:hover {
+  background-color: #00E178;
+}

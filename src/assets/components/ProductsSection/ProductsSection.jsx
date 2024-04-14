@@ -1,18 +1,27 @@
 import React from 'react';
 import useSearch from '../../hooks/useSearch';
 import ProductCard from '../ProductCard/ProductCard';
-import data from "../../fakeapi/data.json";
+import useAuth from '../../hooks/useAuth';
+import useModal from '../../hooks/useModal';
+import useProducts from '../../hooks/useProducts';
+import AddProduct from '../AddProduct/AddProduct'
 import "./ProductsSection.css";
 
 const ProductsSection = () => {
     const { search } = useSearch();
-    const products = data.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+    const { products } = useProducts();
+    const sortProducts = products.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+    const { userData } = useAuth();
+    const { openModal } = useModal();
 
     return (
         <div id="products-section">
-            {products.map((product) => (
+            {sortProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
+            {userData.role && userData.role === "admin" &&
+            <button className="add-product-button" onClick={() => openModal("addProduct")}><i className="fa-solid fa-plus"></i>Nuevo producto</button>}
+            <AddProduct />
         </div>
     );
 }

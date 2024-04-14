@@ -1,11 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
+import useCart from "../hooks/useCart";
 
 export const AuthContext = createContext("");
 
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
-
+    const { emptyCart } = useCart();
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user@MiTienda");
@@ -17,7 +18,8 @@ export const AuthProvider = ({ children }) => {
 
     const login = ({ name, email }) => {
         setIsLoggedIn(true);
-        const userDataObj = { name, email };
+        let userDataObj = {};
+        email.includes("@admin") ?  userDataObj = { name, email, role: "admin" } : userDataObj = { name, email };
         setUserData(userDataObj);
         localStorage.setItem("user@MiTienda", JSON.stringify(userDataObj));
     }
@@ -26,6 +28,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         setUserData({});
         localStorage.removeItem("user@MiTienda");
+        emptyCart();
     }
 
     const authContextValues = {

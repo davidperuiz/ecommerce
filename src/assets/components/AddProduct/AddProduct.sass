@@ -1,0 +1,46 @@
+article
+    h3
+        border-bottom: 2px solid #2D2D2D
+        padding-bottom: 10px
+        text-align: center
+
+    form
+        display: flex
+        flex-direction: column
+
+        label
+            font-weight: bold
+            &::after
+                content: ":"
+
+        input
+            margin: 5px 0 10px 0
+            padding: 5px
+            border: 1px solid #C3C3C3
+            border-radius: 5px
+
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button
+            -webkit-appearance: none
+            margin: 0
+        
+        input[type="number"]
+            -moz-appearance: textfield
+
+        textarea
+            resize: none
+            padding: 5px
+            margin: 5px 0 10px 0
+            border: 1px solid #C3C3C3
+            border-radius: 5px
+
+        .add-new-product
+            cursor: pointer
+            padding: 15px 0
+            background-color: #006CFF
+            color: white
+            border: none
+            border-radius: 10px
+            margin-top: 10px
+            &:hover
+                background-color: #00AAFF
