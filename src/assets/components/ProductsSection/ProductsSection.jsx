@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSearch from '../../hooks/useSearch';
 import ProductCard from '../ProductCard/ProductCard';
 import useAuth from '../../hooks/useAuth';

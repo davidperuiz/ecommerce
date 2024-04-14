@@ -8,8 +8,6 @@ const DeleteProductModal = ({ product }) => {
     const isOpen = modalState["deleteProduct"];
     const { deleteProduct } = useProducts();
 
-    console.log(product.id);
-
     return (
         <Modal isOpen={isOpen} closeModal={() => closeModal("deleteProduct")}>
             <h3>Eliminar producto</h3>

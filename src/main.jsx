@@ -6,6 +6,7 @@ import { AuthProvider } from './assets/context/AuthContext.jsx'
 import { CartProvider } from './assets/context/CartContext.jsx'
 import { SearchProvider } from './assets/context/SearchContext.jsx'
 import { ModalProvider } from './assets/context/ModalContext.jsx'
+import { ProductsProvider } from './assets/context/ProductsContext.jsx'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './assets/router/index.jsx'
 
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthProvider>
           <SearchProvider>
             <ModalProvider>
-              <RouterProvider router={router} />
+              <ProductsProvider>
+                <RouterProvider router={router} />
+              </ProductsProvider>
             </ModalProvider>
           </SearchProvider>
         </AuthProvider>

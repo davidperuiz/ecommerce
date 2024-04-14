@@ -19,17 +19,13 @@ const ProductCard = ({ product }) => {
         addToCart(product);
     }
 
-    const handleOpenModal = () => {
-        openModal(["deleteProduct"]);
-        console.log(product);
-    }
 
     return (
         <div className={`product-card${dark ? " dark" : ""}`} key={id}>
         {userData.role && userData.role === "admin" &&
         <div className="admin-product-panel">
             <button className="edit-button"><i className="fa-solid fa-pen"></i>Editar</button>
-            <button className="delete-button" onClick={handleOpenModal}><i className="fa-solid fa-trash"></i>Eliminar</button>
+            <button className="delete-button" onClick={() => openModal("deleteProduct")}><i className="fa-solid fa-trash"></i>Eliminar</button>
         </div>}
         <Link to={`product/${id}`}>
             <div className="product-panel">
