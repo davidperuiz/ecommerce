@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import useAuth from '../../hooks/useAuth';
 import useModal from '../../hooks/useModal';
 import useProducts from '../../hooks/useProducts';
-import AddProduct from '../AddProduct/AddProduct'
+import AddProductModal from '../AddProductModal/AddProductModal'
 import "./ProductsSection.css";
 
 const ProductsSection = () => {
@@ -21,7 +21,7 @@ const ProductsSection = () => {
             ))}
             {userData.role && userData.role === "admin" &&
             <button className="add-product-button" onClick={() => openModal("addProduct")}><i className="fa-solid fa-plus"></i>Nuevo producto</button>}
-            <AddProduct />
+            <AddProductModal />
         </div>
     );
 }

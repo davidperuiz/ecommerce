@@ -12,23 +12,23 @@ export const ProductsProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const getProducts = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get(API_URL);
-                setProducts(response.data);
-            } catch (error) {
-                if (error.response && error.response.status === 404)
-                    setError("No products.");
-                else
-                    setError("Error fetching products.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
         getProducts();
     }, []);
+
+    const getProducts = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get(API_URL);
+            setProducts(response.data);
+        } catch (error) {
+            if (error.response && error.response.status === 404)
+                setError("No hay productos.");
+            else
+                setError("Error al recuperar los productos:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const deleteProduct = async (id) => {
         try {
@@ -38,9 +38,9 @@ export const ProductsProvider = ({ children }) => {
                 prevProducts.filter((product) => product.id != id));
         } catch (error) {
             if (error.response && error.response.status === 404)
-                    setError("No products.");
+                    setError("El producto ya fue eliminado.");
                 else
-                    setError("Error fetching products.");
+                    setError("Error al eliminar producto:", error);
         } finally {
             setLoading(false);
         }
@@ -65,7 +65,7 @@ export const ProductsProvider = ({ children }) => {
             const response = await axios.post(API_URL, newProduct);
             setProducts((prevProducts) => [...prevProducts, response.data]);
         } catch (error) {
-            console.error("Error adding product:", error);
+            console.error("Error al crear producto:", error);
         } finally {
             setLoading(false);
         }

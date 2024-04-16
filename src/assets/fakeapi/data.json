@@ -263,6 +263,18 @@
         "rate": 0,
         "count": 0
       }
+    },
+    {
+      "id": "745cf411-1f5e-42d1-a2ca-05eff36d2fd0",
+      "title": "Pantalón",
+      "price": 20.5,
+      "description": "Un pantalón muy bonito",
+      "category": "Ropa",
+      "image": "dkldfnkdjfv",
+      "rating": {
+        "rate": 0,
+        "count": 0
+      }
     }
   ]
 }

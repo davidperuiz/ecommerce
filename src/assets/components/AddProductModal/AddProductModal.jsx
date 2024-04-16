@@ -2,9 +2,9 @@ import React from 'react';
 import useModal from '../../hooks/useModal';
 import Modal from '../../modal/Modal';
 import useProducts from '../../hooks/useProducts';
-import "./AddProduct.css";
+import "./AddProductModal.css";
 
-const AddProduct = () => {
+const AddProductModal = () => {
     const { modalState, closeModal } = useModal();
     const isOpen = modalState["addProduct"];
     const { createProduct } = useProducts();
@@ -51,4 +51,4 @@ const AddProduct = () => {
     );
 }
 
-export default AddProduct;
+export default AddProductModal;
