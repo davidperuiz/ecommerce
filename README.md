@@ -68,3 +68,36 @@ Para resolver el problema con éxito debes añadir las siguientes funcionalidade
 * **Mejora de UX tras error:** muestra una página de eerror predeterminada si los usuarios navegan hacia una ruta no controlada.
 
 No es recomendable que intentes generar desde cero el router para el *provider* con todos los componentes creados. Empieza con el componente raíz de la versión anterior y ve incrementando las rutas y contenidos uno a uno.
+
+## Lab 4. Añade operaciones CRUD a tu proyecto.
+
+El objetivo principal es agregar al ecommerce la capacidad de servir los productos desde una API y generar un CRUD para acturar sobre los mismos.
+
+Para resolverlo con éxito, incluye las siguientes funcionalidades:
+
+* **Reglas para usuarios administradores:** si el email del usuario que se registra es *"@admin"*, se le atribuirá un rol de administrador. Almacenaremos este dato en *LocalStorage*.
+* **Acciones permitidas para los administradores:** añadir, eliminar y modificar productos.
+
+    *Observaciones:* añade botones o iconos para editaar y eliminar un producto en cada tarjeta y un botón con una posición fija que permita incluir un producto nuevo solo visible para los administradores.
+
+* **Conexión a nuestra API:** crea una API con JSON-Server y conecta las operaciones CRUD de la US-2 a ella.
+
+Es recomendable empezar por la gestión de productos en el estado global, crear las operaciones CRUD y, después, conectar la API cuando todo funcione de manera correcta.
+
+## Lab5. Gestiona los productos del ecommerce con Redux.
+
+El objetivo principal es emplear Redux, así como la librería Redux Toolkit, para mejorar la funcionalidad del ecommerce. En este caso, cambiar la gestión del contexto de productos a Redux con un slice de productos.
+
+Elimina el contexto de productos y aañade la misma funcionalidad a una *store* de Redux. Para ello:
+
+* Modifica el contexto de la aplicación que tiene comunicación HTTP para pasar totalmente la gestión a Redux. Y, además:
+
+    * No pierdas la funcionalidad, no en cuanto a gestión de errores ni a componentes visuales mostrados en tiempos de espera.
+    * Los *thunks* necesarios se crearán con el método *createAsyncThunk*.
+
+Es recomendable aislar muy bien las funcionalidades. Fíjate mucho en los parámetros que se pueden pasar a los thunks para que no aparezcan problemas en cuanto a tipado.
+
+>[!NOTE]
+> **Los métodos de comunicación vistos en el lab:**
+>
+> APIs → thunks → slice → consumir.

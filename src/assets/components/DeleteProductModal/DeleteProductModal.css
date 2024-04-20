@@ -1,0 +1,67 @@
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+}
+.modal-overlay .modal-container {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+}
+.modal-overlay .modal-container .modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #FF5028;
+}
+.modal-overlay .modal-container .modal-close:hover {
+  background-color: #FF7346;
+}
+.modal-overlay .modal-container h3 {
+  border-bottom: 2px solid #2D2D2D;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.modal-overlay .modal-container .delete-panel-button {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.modal-overlay .modal-container .delete-panel-button button {
+  cursor: pointer;
+  width: 100px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+.modal-overlay .modal-container .delete-panel-button .confirm-delete {
+  color: white;
+  background-color: #FF5028;
+}
+.modal-overlay .modal-container .delete-panel-button .confirm-delete:hover {
+  background-color: #FF7346;
+}
+.modal-overlay .modal-container .delete-panel-button .cancel-delete {
+  background-color: #E7E7E7;
+}
+.modal-overlay .modal-container .delete-panel-button .cancel-delete:hover {
+  background-color: #F0F0F0;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

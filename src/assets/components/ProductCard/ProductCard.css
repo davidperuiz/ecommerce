@@ -6,6 +6,37 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   margin: 20px;
 }
+.product-card .admin-product-panel {
+  display: flex;
+  justify-content: space-evenly;
+}
+.product-card .admin-product-panel button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 7px 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.product-card .admin-product-panel button i {
+  margin-right: 15px;
+}
+.product-card .admin-product-panel .edit-button {
+  border-top-left-radius: 5px;
+  background-color: #FFAA28;
+}
+.product-card .admin-product-panel .edit-button:hover {
+  background-color: #FFBE46;
+}
+.product-card .admin-product-panel .delete-button {
+  border-top-right-radius: 5px;
+  background-color: #FF5028;
+}
+.product-card .admin-product-panel .delete-button:hover {
+  background-color: #FF7346;
+}
 .product-card a {
   text-decoration: none;
 }

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useDarkTheme from '../../hooks/useDarkTheme';
+import { useDarkTheme } from '../../hooks/useDarkTheme';
 import { CartContext } from '../../context/CartContext';
 import "./HeaderIcons.css";
 

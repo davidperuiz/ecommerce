@@ -1,0 +1,85 @@
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+}
+.modal-overlay .modal-container {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+}
+.modal-overlay .modal-container .modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #FF5028;
+}
+.modal-overlay .modal-container .modal-close:hover {
+  background-color: #FF7346;
+}
+.modal-overlay .modal-container h3 {
+  border-bottom: 2px solid #2D2D2D;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.modal-overlay .modal-container form {
+  display: flex;
+  flex-direction: column;
+}
+.modal-overlay .modal-container form label {
+  font-weight: bold;
+}
+.modal-overlay .modal-container form label::after {
+  content: ":";
+}
+.modal-overlay .modal-container form input {
+  margin: 5px 0 10px 0;
+  padding: 5px;
+  border: 1px solid #C3C3C3;
+  border-radius: 5px;
+}
+.modal-overlay .modal-container form input[type=number]::-webkit-inner-spin-button,
+.modal-overlay .modal-container form input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.modal-overlay .modal-container form input[type=number] {
+  -moz-appearance: textfield;
+}
+.modal-overlay .modal-container form textarea {
+  resize: none;
+  padding: 5px;
+  margin: 5px 0 10px 0;
+  border: 1px solid #C3C3C3;
+  border-radius: 5px;
+}
+.modal-overlay .modal-container form .edit-product {
+  cursor: pointer;
+  padding: 15px 0;
+  background-color: #006CFF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.modal-overlay .modal-container form .edit-product:hover {
+  background-color: #00AAFF;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

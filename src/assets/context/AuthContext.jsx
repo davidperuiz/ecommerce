@@ -6,7 +6,6 @@ export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
 
-
     useEffect(() => {
         const storedUser = localStorage.getItem("user@MiTienda");
         if (storedUser) {
@@ -17,8 +16,12 @@ export const AuthProvider = ({ children }) => {
 
     const login = ({ name, email }) => {
         setIsLoggedIn(true);
-        const userDataObj = { name, email };
-        setUserData(userDataObj);
+        const userRole = email.includes("@admin") ? "admin" : "user";
+        let userDataObj = {
+            name,
+            email,
+            role: userRole
+        };
         localStorage.setItem("user@MiTienda", JSON.stringify(userDataObj));
     }
 

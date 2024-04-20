@@ -1,14 +1,15 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import useDarkTheme from '../../hooks/useDarkTheme';
-import useCart from '../../hooks/useCart';
+import { useDarkTheme } from '../../hooks/useDarkTheme';
+import { useCart } from '../../hooks/useCart';
+import { useProducts } from '../../hooks/useProducts';
 import Rating from '../Rating/Rating';
-import data from "../../fakeapi/data.json";
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
     const { productId } = useParams();
-    const product = data.find(item => item.id === parseInt(productId));
+    const { products } = useProducts();
+    const product = products.find(item => item.id === productId);
     const { dark } = useDarkTheme();
     const { addToCart } = useCart();
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useDarkTheme from '../../hooks/useDarkTheme';
-import useCart from '../../hooks/useCart';
 import CartProduct from '../CartProduct/CartProduct';
+import { useDarkTheme } from '../../hooks/useDarkTheme';
+import { useCart } from '../../hooks/useCart';
 import "./Cart.css";
 
 const Cart = () => {

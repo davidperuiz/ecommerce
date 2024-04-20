@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useSearch from '../../hooks/useSearch';
+import { useSearch } from '../../hooks/useSearch';
 import "./HeaderNavBar.css"
 
 const HeaderNavBar = () => {

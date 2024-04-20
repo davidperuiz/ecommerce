@@ -7,7 +7,7 @@ import Banner from './assets/components/Banner/Banner';
 import ProductsSection from './assets/components/ProductsSection/ProductsSection';
 import Cart from './assets/components/Cart/Cart'
 import Footer from './assets/components/Footer/Footer';
-import useDarkTheme from './assets/hooks/useDarkTheme';
+import { useDarkTheme } from './assets/hooks/useDarkTheme';
 
 const App = () => {
     // const [term, setTerm] = useState("");

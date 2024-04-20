@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { SearchContext } from "../context/SearchContext";
 
-const useSearch = () => {
+export const useSearch = () => {
     const context = useContext(SearchContext);
 
     return context;
 }
-
-export default useSearch;

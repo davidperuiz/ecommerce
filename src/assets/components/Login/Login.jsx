@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
-import useDarkTheme from '../../hooks/useDarkTheme';
-import useAuth from '../../hooks/useAuth';
+import { useDarkTheme } from '../../hooks/useDarkTheme';
+import { useAuth } from '../../hooks/useAuth';
 import "./Login.css"
 
 const Login = () => {

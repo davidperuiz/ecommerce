@@ -1,18 +1,48 @@
-import React from 'react';
-import useSearch from '../../hooks/useSearch';
+import React, { useEffect, useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import data from "../../fakeapi/data.json";
+import { useSearch }  from '../../hooks/useSearch';
+import { useAuth } from '../../hooks/useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../redux/products/productSlice';
+import AddProductModal from '../AddProductModal/AddProductModal';
 import "./ProductsSection.css";
 
 const ProductsSection = () => {
     const { search } = useSearch();
-    const products = data.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+    const { userData } = useAuth();
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.product.products);
+    const loading = useSelector((state) => state.product.loading);
+    const error = useSelector((state) => state.product.error);
+    const sortProducts = products.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+    const [modalState, setModalState] = useState(false);
+
+    useEffect(() => {
+        if (loading)
+            return <div>Cargando...</div>
+
+        if (error !== null)
+            return <div>Error: {error}</div>
+
+        dispatch(getAllProducts())
+    }, []);
+
+    const handleOpenModal = () => {
+        setModalState(true);
+    }
+
+    const handleCloseModal = () => {
+        setModalState(false);
+    }
 
     return (
         <div id="products-section">
-            {products.map((product) => (
+            {sortProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
+            {userData.role === "admin" &&
+            <button className="add-product-button" onClick={handleOpenModal}><i className="fa-solid fa-plus"></i>Nuevo producto</button>}
+            <AddProductModal openModal={modalState} closeModal={handleCloseModal} />
         </div>
     );
 }
