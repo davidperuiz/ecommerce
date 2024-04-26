@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editProduct } from "../../redux/products/productSlice";
+import { editProduct } from "../../redux/products/productThunks";
 import "./EditProductModal.css"
 
 const EditProductModal = ({ openModal, closeModal, product }) => {

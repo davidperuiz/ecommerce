@@ -2,21 +2,29 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import { useDarkTheme } from '../../hooks/useDarkTheme';
 import { useCart } from '../../hooks/useCart';
-import { useProducts } from '../../hooks/useProducts';
+import { useSelector } from 'react-redux';
 import Rating from '../Rating/Rating';
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
     const { productId } = useParams();
-    const { products } = useProducts();
-    const product = products.find(item => item.id === productId);
+    const products = useSelector((state) => state.product.products);
+    const loading = useSelector((state) => state.product.loading);
+    const error = useSelector((state) => state.product.error);
+    const product = products?.find(item => item.id === productId);
     const { dark } = useDarkTheme();
     const { addToCart } = useCart();
 
+    if (loading || !product)
+        return <div>Cargando...</div>
+
+    if (error !== null)
+        return <div>Error: {error}</div>
+    
     const handleAddProduct = (product) => {
         addToCart(product);
     }
-
+    
     return (
         <div className={`product-component${dark ? " dark" : ""}`}>
             <img src={product.image} alt={product.title} />

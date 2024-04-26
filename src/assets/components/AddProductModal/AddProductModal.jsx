@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../../redux/products/productSlice';
+import { addProduct } from '../../redux/products/productThunks';
 import { v4 as uuidv4 } from "uuid";
 import "./AddProductModal.css";
 

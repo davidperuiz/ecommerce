@@ -1,58 +1,11 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+    getAllProducts,
+    addProduct,
+    deleteProduct,
+    editProduct
+} from "./productThunks";
 
-// Thunks
-const API_URL = "http://localhost:3000/products";
-
-export const getAllProducts = createAsyncThunk(
-    "products/getAllProducts",
-    async () => {
-        try {
-            const response = await axios.get(API_URL);
-            return response.data;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-);
-
-export const addProduct = createAsyncThunk(
-    "products/addProduct",
-    async (newProduct) => {
-        try {
-            const response = await axios.post(API_URL, newProduct);
-            return response.data;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-);
-
-export const deleteProduct = createAsyncThunk(
-    "products/deleteProduct",
-    async (id) => {
-        try {
-            const response = await axios.delete(`${API_URL}/${id}`);
-            return response.data;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-)
-
-export const editProduct = createAsyncThunk(
-    "products/editProduct",
-    async (editedProduct) => {
-        try {
-            const response = await axios.put(`${API_URL}/${editedProduct.id}`, editedProduct);
-            return response.data;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-)
-
-// Slice
 const initialState = {
     products: [],
     loading: false,
@@ -69,31 +22,52 @@ const productSlice = createSlice({
                 state.loading = false;
                 state.products = action.payload;
             })
+            .addCase(getAllProducts.rejected, (state, action) => {
+                state.loading = false;
+                if (action.error.response && action.error.response.status === 404)
+                    state.error = "No hay ningún producto.";
+                else
+                    state.error = "Error al recuperar los productos.";
+            })
             .addCase(addProduct.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products.push(action.payload);
             })
-            .addCase(deleteProduct.fulfilled, (state, action) => {
+            .addCase(addProduct.rejected, (state, action) => {
                 state.loading = false;
-                state.products.filter((product) => product.id !== action.payload);
+                state.error = "Error al crear el producto.";
+            })
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+                const deletedProductId = action.meta.arg;
+                state.loading = false;
+                state.products.filter((product) => product.id !== deletedProductId);
+            })
+            .addCase(deleteProduct.rejected, (state, action) => {
+                const deletedProductId = action.meta.arg;
+                state.loading = false;
+                if (action.error.response && action.error.response.status === 404)
+                    state.error = `El producto con ID ${deletedProductId} ya no existe.`;
+                else
+                    state.error = `Error al eliminar el producto con ID ${deletedProductId}.`;
             })
             .addCase(editProduct.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products = state.products.map((product) =>
                     product.id === action.payload.id ? action.payload : product);
             })
+            .addCase(editProduct.rejected, (state, action) => {
+                const id = action.meta.arg;
+                state.loading = false;
+                if (action.error.response && action.error.response.status === 404)
+                    state.error = `El producto con ID ${id} ya no existe.`;
+                else
+                    state.error = `Error al modificar el producto con ID ${id}.`;
+            })
             .addMatcher(
                 (action) => action.type.endsWith("/pending"),
                 (state) => {
                     state.loading = true;
                     state.error = null;
-                }
-            )
-            .addMatcher(
-                (action) => action.type.endsWith("/rejected"),
-                (state, action) => {
-                    state.loading = false;
-                    state.error = action.error.message;
                 }
             )
     }

@@ -3,7 +3,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import { useSearch }  from '../../hooks/useSearch';
 import { useAuth } from '../../hooks/useAuth';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../redux/products/productSlice';
+import { getAllProducts } from '../../redux/products/productThunks';
 import AddProductModal from '../AddProductModal/AddProductModal';
 import "./ProductsSection.css";
 
@@ -18,12 +18,6 @@ const ProductsSection = () => {
     const [modalState, setModalState] = useState(false);
 
     useEffect(() => {
-        if (loading)
-            return <div>Cargando...</div>
-
-        if (error !== null)
-            return <div>Error: {error}</div>
-
         dispatch(getAllProducts())
     }, []);
 
@@ -34,6 +28,12 @@ const ProductsSection = () => {
     const handleCloseModal = () => {
         setModalState(false);
     }
+
+    if (loading)
+        return <div>Cargando...</div>
+
+    if (error !== null)
+        return <div>Error: {error}</div>
 
     return (
         <div id="products-section">
