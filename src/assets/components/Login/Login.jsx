@@ -43,7 +43,11 @@ const Login = () => {
 
         if (name.length < 3) {
             return setError("name", {
-                message: "El nombre es demasiado corto."
+                message: "El nombre es demasiado corto. Debe tener entre 3 y 50 caracteres."
+            });
+        } else if (name.length > 50) {
+            return setError("name", {
+                message: "El nombre es demasiado largo. Debe tener entre 3 y 50 caracteres."
             });
         } else
             clearErrors("name");
@@ -85,7 +89,11 @@ const Login = () => {
 
         if (password.length < 6) {
             return setError("password", {
-                message: "La contraseña debe tener al menos 6 caracteres."
+                message: "La contraseña es demasiado corta. Debe tener mínimo 6 caracteres."
+            });
+        } else if (password.length > 50) {
+            return setError("password", {
+                message: "La contraseña es demasiado larga. Debe tener máximo 50 caracteres."
             });
         }
 
@@ -113,7 +121,11 @@ const Login = () => {
                                 required: "Introduzca un nombre.",
                                 minLength: {
                                     value: 3,
-                                    message: "El nombre es demasiado corto."
+                                    message: "El nombre es demasiado corto. Debe tener entre 3 y 50 caracteres."
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "El nombre es demasiado largo. Debe tener entre 3 y 50 caracteres."
                                 }
                             })}
                             onBlur = {() => handleNameValidation()}
@@ -151,7 +163,11 @@ const Login = () => {
                                 required: "Introduzca una contraseña.",
                                 minLength: {
                                     value: 6,
-                                    message: "La contraseña debe tener al menos 6 caracteres."
+                                    message: "La contraseña es demasiado corta. Debe tener mínimo 6 caracteres."
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "La contraseña es demasiado larga. Debe tener máximo 50 caracteres."
                                 },
                                 pattern: {
                                     value: /^[a-zA-Z0-9]{6,}$/,

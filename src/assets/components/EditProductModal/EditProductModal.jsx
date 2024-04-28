@@ -55,6 +55,10 @@ const EditProductModal = ({ openModal, closeModal, product }) => {
             return setError("title", {
                 message: "El título es demasiado corto."
             });
+        } else if (editedProduct.title.length > 50) {
+            return setError("title", {
+                message: "El título es demasiado largo."
+            });
         } else
             clearErrors("title");
     }
@@ -81,24 +85,40 @@ const EditProductModal = ({ openModal, closeModal, product }) => {
         if (errors.description)
             clearErrors("description");
 
-        if (editedProduct.description === "") {
-            return setError("description", {
-                message: "Introduzca una descripción."
-            });
-        } else
-            clearErrors("description");
+            if (editedProduct.description === "") {
+                return setError("description", {
+                    message: "Introduzca una descripción."
+                });
+            } else if (editedProduct.description.length < 10) {
+                return setError("description", {
+                    message: "La descripción es demasiado corta."
+                });
+            } else if (editedProduct.description.length > 255) {
+                return setError("description", {
+                    message: "La descripción es demasiado larga."
+                });
+            } else
+                clearErrors("description");
     }
 
     const handleCategoryValidation = () => {
         if (errors.category)
             clearErrors("category");
 
-        if (editedProduct.category === "") {
-            return setError("category", {
-                message: "Introduzca una categoría."
-            });
-        } else
-            clearErrors("category");
+            if (editedProduct.category === "") {
+                return setError("category", {
+                    message: "Introduzca una categoría."
+                });
+            } else if (editedProduct.category.length < 3) {
+                return setError("category", {
+                    message: "La caategoría es demasiado corta."
+                });
+            } else if (editedProduct.category.length > 25) {
+                return setError("category", {
+                    message: "La caategoría es demasiado larga."
+                });
+            } else
+                clearErrors("category");
     }
 
     const handleImageValidation = () => {
@@ -154,6 +174,10 @@ const EditProductModal = ({ openModal, closeModal, product }) => {
                                 minLength: {
                                     value: 3,
                                     message: "El título es demasiado corto.",
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "El título es demasiado largo."
                                 }
                             })}
                             onChange={handleInputChange}
@@ -197,7 +221,15 @@ const EditProductModal = ({ openModal, closeModal, product }) => {
                             rows="3"
                             value={editedProduct.description}
                             {...register("description", {
-                                required: "Introduzca una descripción."
+                                required: "Introduzca una descripción.",
+                                minLength: {
+                                    value: 10,
+                                    message: "La descripción es demasiado corta."
+                                },
+                                maxLength: {
+                                    value: 255,
+                                    message: "La descripción es demasiado larga."
+                                }
                             })}
                             onChange={handleInputChange}
                             onBlur={() => handleDescriptionValidation()}
@@ -215,7 +247,15 @@ const EditProductModal = ({ openModal, closeModal, product }) => {
                             id="category"
                             value={editedProduct.category}
                             {...register("category", {
-                                required: "Introduzca una categoría."
+                                required: "Introduzca una categoría.",
+                                minLength: {
+                                    value: 3,
+                                    message: "La categoría es demasiado corta."
+                                },
+                                maxLength: {
+                                    value: 25,
+                                    message: "La categoría es demasiado larga."
+                                }
                             })}
                             onChange={handleInputChange}
                             onBlur={() => handleCategoryValidation()}

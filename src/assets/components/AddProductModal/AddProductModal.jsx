@@ -39,6 +39,10 @@ const AddProductModal = ({ openModal, closeModal }) => {
             return setError("title", {
                 message: "El título es demasiado corto."
             });
+        } else if (title.length > 50) {
+            return setError("title", {
+                message: "El título es demasiado largo."
+            });
         } else
             clearErrors("title");
     }
@@ -73,6 +77,14 @@ const AddProductModal = ({ openModal, closeModal }) => {
             return setError("description", {
                 message: "Introduzca una descripción."
             });
+        } else if (description.length < 10) {
+            return setError("description", {
+                message: "La descripción es demasiado corta."
+            });
+        } else if (description.length > 255) {
+            return setError("description", {
+                message: "La descripción es demasiado larga."
+            });
         } else
             clearErrors("description");
     }
@@ -86,6 +98,14 @@ const AddProductModal = ({ openModal, closeModal }) => {
         if (category === "") {
             return setError("category", {
                 message: "Introduzca una categoría."
+            });
+        } else if (category.length < 3) {
+            return setError("category", {
+                message: "La caategoría es demasiado corta."
+            });
+        } else if (category.length > 25) {
+            return setError("category", {
+                message: "La caategoría es demasiado larga."
             });
         } else
             clearErrors("category");
@@ -151,6 +171,10 @@ const AddProductModal = ({ openModal, closeModal }) => {
                                 minLength: {
                                     value: 3,
                                     message: "El título es demasiado corto."
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "El título es demasiado largo."
                                 }
                             })}
                             onBlur={() => handleTitleValidation()}
@@ -189,7 +213,15 @@ const AddProductModal = ({ openModal, closeModal }) => {
                             id="description"
                             rows="3"
                             {...register("description", {
-                                required: "Introduzca una descripción."
+                                required: "Introduzca una descripción.",
+                                minLength: {
+                                    value: 10,
+                                    message: "La descripción es demasiado corta."
+                                },
+                                maxLength: {
+                                    value: 255,
+                                    message: "La descripción es demasiado larga."
+                                }
                             })}
                             onBlur={() => handleDescriptionValidation()}
                         />
@@ -205,7 +237,15 @@ const AddProductModal = ({ openModal, closeModal }) => {
                             name="category"
                             id="category"
                             {...register("category", {
-                                required: "Introduzca una categoría."
+                                required: "Introduzca una categoría.",
+                                minLength: {
+                                    value: 3,
+                                    message: "La categoría es demasiado corta."
+                                },
+                                maxLength: {
+                                    value: 25,
+                                    message: "La categoría es demasiado larga."
+                                }
                             })}
                             onBlur={() => handleCategoryValidation()}
                         />
