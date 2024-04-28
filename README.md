@@ -101,3 +101,24 @@ Es recomendable aislar muy bien las funcionalidades. Fíjate mucho en los parám
 > **Los métodos de comunicación vistos en el lab:**
 >
 > APIs → thunks → slice → consumir.
+
+
+## Lab6. Cambia la gestión de los formularios a React Hook Form.
+
+El objetivo principal de esta prueba es caambiar y mejorar la gestión de los formularios aplicando validación en sus campos y feedback sobre los posibles errores que puedan surgir cuando el usuario introduce los datos.
+
+### Añade el campo de la contraseña y uno nuevo que sea "repetir contraseña" en el formulario del login.
+    
+Debes incluir dos nuevos inputs en el formulario. La idea es que se puedan validar si ambos campos son exactamente iguales, permitiendo realizar el inicio de sesión dentro de la aplicación.
+  
+### Mejora la gestión de formularios y el feedback al usuario.
+  
+Utilizaa *React Hook Form* para controlar los formularios y compartir indicaciones en vivo a los usuaarios cuando estros introduzcan sus datos en el momento. Se debe mostrar de forma instantánea, sin esperar a que pulsen los botones de enviar el formulario.
+
+### Criterios mínimos de validación
+
+* Campos requeridos.
+* Contraseña y repetir contraseña coincidentes.
+* Formato en email y en la URL de la imagen del producto.
+* Textos (nombre, descripción y categoría) con longitudes máximas y mínimas.
+* Precios de los productos mayores que cero.
