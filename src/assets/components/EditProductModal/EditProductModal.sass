@@ -38,15 +38,20 @@
             flex-direction: column
 
             label
+                display: flex
+                flex-direction: column
                 font-weight: bold
-                &::after
-                    content: ":"
 
             input
-                margin: 5px 0 10px 0
+                margin: 5px 0
                 padding: 5px
                 border: 1px solid #C3C3C3
                 border-radius: 5px
+
+            span
+                font-size: 12px
+                color: #FF5028
+                margin-bottom: 10px
 
             input[type="number"]::-webkit-inner-spin-button, 
             input[type="number"]::-webkit-outer-spin-button

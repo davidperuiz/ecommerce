@@ -13,11 +13,22 @@
   background-color: #F8F8F8;
   border: 1px solid #C5C5C5;
 }
-.login-section .login-panel input {
-  margin-bottom: 10px;
+.login-section .login-panel label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+.login-section .login-panel label input {
+  margin-bottom: 5px;
   padding: 10px;
   border: 1px solid #C5C5C5;
   border-radius: 5px;
+}
+.login-section .login-panel label span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #FF5028;
+  margin-bottom: 10px;
 }
 .login-section .login-panel .log-session {
   cursor: pointer;

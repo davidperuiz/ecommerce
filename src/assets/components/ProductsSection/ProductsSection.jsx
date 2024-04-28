@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../ProductCard/ProductCard';
 import { useSearch }  from '../../hooks/useSearch';
 import { useAuth } from '../../hooks/useAuth';
-import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../redux/products/productThunks';
 import AddProductModal from '../AddProductModal/AddProductModal';
 import "./ProductsSection.css";

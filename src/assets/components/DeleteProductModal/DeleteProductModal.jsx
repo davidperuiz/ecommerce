@@ -9,6 +9,7 @@ const DeleteProductModal = ({ openModal, closeModal, product }) => {
     const handleDeleteProduct = () => {
         dispatch(deleteProduct(product.id));
         closeModal();
+        window.location.reload();
     }
 
     return (
